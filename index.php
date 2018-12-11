@@ -126,8 +126,8 @@
 					  </div>
 
 					  <div class="form-group row">
-					    <div class="col-sm-10">
-					      <button type="submit" class="btn btn-primary text-center">Genarate</button>
+					    <div class="col-sm-10 offset-sm-1 text-center">
+					      <button type="submit" class="btn btn-primary">Genarate</button>
 					    </div>
 					  </div>
 					</form>
