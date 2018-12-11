@@ -110,11 +110,18 @@
 					    <label for="name" class="col-sm-2 col-form-label">Task</label>
 					    <div class="col-sm-10">
 					    	<fieldset class="todos_labels">
-					      <div class="row repeatable"></div>
-							<div class="form-group mt-1" style="text-align:center;">
-								<input type="button" value="Add More Task" class="btn btn-success btn-sm add" align="center">
-							</div>
+						      <div class="repeatable row"></div>
+								<div class="form-group mt-1" style="text-align:center;">
+									<input type="button" value="Add More Task" class="btn btn-success btn-sm add" align="center">
+								</div>
 							</fieldset>
+					    </div>
+					  </div>
+
+					  <div class="form-group row">
+					    <label for="comment" class="col-sm-2 col-form-label">Comment</label>
+					    <div class="col-sm-10">
+					      <textarea class="form-control" id="comment" name="commnet" rows="3" placeholder="Comment"></textarea>
 					    </div>
 					  </div>
 
@@ -246,28 +253,21 @@
 	<script type="text/javascript" src="js/FileSaver.js"></script>
 	<script type="text/javascript" src="js/jquery.wordexport.js"></script>
 	<script type="text/javascript" src="js/jquery.repeatable.js"></script>
-	<script type="text/javascript" src="js/scripts.js"></script>
 	
-
-
-	<script type="text/template" id="task_template">
-		<div class="col-sm-12 mt-1">
-      		<input type="text" class="form-control" id="name" name="name" placeholder="Task Name">
+	<script type="text/template" id="todos_labels">
+		<div class="col-sm-6   field-group">
+			<div class=" mt-1">
+	      		<input type="text" class="form-control" id="task-name-{?}" name="task[{?}][name]" placeholder="Task Name">
+	      	</div>
+	      	<div class=" mt-1">
+	      		<textarea class="form-control" id="task-description-{?}" name="task[{?}][description]" rows="3" placeholder="Task Description"></textarea>
+	      	</div>
+	      	<div class=" mt-1">
+	      		<label for="">Action</label><br>
+	  			<input type="button" class="btn btn-sm btn-danger span-2 mb-2 delete" value="Remove" />
       	</div>
-      	<div class="col-sm-12 mt-1">
-      		<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Task Description"></textarea>
-      	</div>
+      </div>
 	</script>
-	<script type="text/javascript">
-		$(function() {
-		$(".task_template .repeatable").repeatable({
-			addTrigger: ".task_template .add",
-			deleteTrigger: ".task_template .delete",
-			template: "#task_template",
-			startWith: 1,
-			max: 5
-		});
-	});
-	</script>
+	<script type="text/javascript" src="js/scripts.js"></script>
 </body>
 </html>

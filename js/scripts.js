@@ -40,9 +40,14 @@ jQuery(document).ready(function($) {
 
 
     /*Repeatable field start*/
-
-	
-
+	$(function() {
+		$(".todos_labels .repeatable").repeatable({
+			addTrigger: ".todos_labels .add",
+			deleteTrigger: ".todos_labels .delete",
+			template: "#todos_labels",
+			startWith: 1
+		});
+	});
     /*Repeatable field end*/
 
     });
