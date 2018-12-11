@@ -1,3 +1,12 @@
+<?php 
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+	echo "<pre>";
+	print_r($_POST);
+	echo "</pre>";
+	exit();
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +30,7 @@
 				  </div>
 				  <div class="card-body">
 
-				    <form>
+				    <form method="POST" action="">
 					  <div class="form-group row">
 					    <label for="name" class="col-sm-2 col-form-label">Name</label>
 					    <div class="col-sm-10">
@@ -33,7 +42,7 @@
 					    <label for="date" class="col-sm-2 col-form-label">Date</label>
 					    <div class="col-sm-10">
 					      <div class="input-group date" id="report-date-picker" data-target-input="nearest">
-		                    <input type="text" class="form-control datetimepicker-input" data-target="#report-date-picker"/>
+		                    <input type="text" id="date" name="date" class="form-control datetimepicker-input" data-target="#report-date-picker"/>
 		                    <div class="input-group-append" data-target="#report-date-picker" data-toggle="datetimepicker">
 		                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
 		                    </div>
@@ -42,19 +51,19 @@
 					  </div>
 
 					  <div class="form-group row">
-					    <label for="date" class="col-sm-2 col-form-label">Shift</label>
+					    <label for="shift_start" class="col-sm-2 col-form-label">Shift</label>
 					    <div class="col-sm-4">
 					      <div class="input-group date" id="report-start-time-picker" data-target-input="nearest">
-		                    <input type="text" value="2:00 PM" class="form-control datetimepicker-input" data-target="#report-start-time-picker"/>
+		                    <input type="text" value="2:00 PM" id="shift_start" name="shift_start" class="form-control datetimepicker-input" data-target="#report-start-time-picker"/>
 		                    <div class="input-group-append" data-target="#report-start-time-picker" data-toggle="datetimepicker">
 		                        <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
 		                    </div>
 		                </div>
 					    </div>
-		                 <label  class="col-sm-2 text-center col-form-label">to</label>
+		                 <label for="shift_end"  class="col-sm-2 text-center col-form-label">to</label>
 					    <div class="col-sm-4">
 					      <div class="input-group date" id="shift-end-time-picker" data-target-input="nearest">
-		                    <input type="text" value="6:00 PM" class="form-control datetimepicker-input" data-target="#shift-end-time-picker"/>
+		                    <input type="text" id="shift_end" name="shift_end" value="6:00 PM" class="form-control datetimepicker-input" data-target="#shift-end-time-picker"/>
 		                    <div class="input-group-append" data-target="#shift-end-time-picker" data-toggle="datetimepicker">
 		                        <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
 		                    </div>
@@ -63,9 +72,9 @@
 					  </div>
 
 					<div class="form-group row">
-					    <label for="name" class="col-sm-2 col-form-label">Work Arena</label>
+					    <label for="work_arena" class="col-sm-2 col-form-label">Work Arena</label>
 					    <div class="col-sm-10">
-					      <select class="form-control" id="exampleFormControlSelect1">
+					      <select class="form-control" id="work_arena" name="work_arena">
 						      <option value="Web Development">Web Development</option>
 						      <option value="Web Design">Web Design</option>
 						      <option value="Graphic Design">Graphic Design</option>
@@ -75,9 +84,9 @@
 					</div>
 
 					<div class="form-group row">
-					    <label for="name" class="col-sm-2 col-form-label">Reporting to</label>
+					    <label for="reporting_to" class="col-sm-2 col-form-label">Reporting to</label>
 					    <div class="col-sm-10">
-					      <select class="form-control" id="exampleFormControlSelect1">
+					      <select class="form-control" id="reporting_to" name="reporting_to">
 						      <option value="Engr. Rony Debnath">Engr. Rony Debnath</option>
 						    </select>
 					    </div>
@@ -86,19 +95,19 @@
 					<hr/>
 
 					<div class="form-group row">
-					    <label for="date" class="col-sm-2 col-form-label">Log in</label>
+					    <label for="log_in_time" class="col-sm-2 col-form-label">Log in</label>
 					    <div class="col-sm-4">
 					      <div class="input-group date" id="log-in-time-picker" data-target-input="nearest">
-		                    <input type="text"  class="form-control datetimepicker-input" data-target="#log-in-time-picker"/>
+		                    <input type="text"  id="log_in_time" name="log_in_time" class="form-control datetimepicker-input" data-target="#log-in-time-picker"/>
 		                    <div class="input-group-append" data-target="#log-in-time-picker" data-toggle="datetimepicker">
 		                        <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
 		                    </div>
 		                </div>
 					    </div>
-		                 <label  class="col-sm-2 text-center col-form-label">Log out</label>
+		                 <label for="log_out_time"  class="col-sm-2 text-center col-form-label">Log out</label>
 					    <div class="col-sm-4">
 					      <div class="input-group date" id="log-out-time-picker" data-target-input="nearest">
-		                    <input type="text" class="form-control datetimepicker-input" data-target="#log-out-time-picker"/>
+		                    <input type="text" id="log_out_time" name="log_out_time" class="form-control datetimepicker-input" data-target="#log-out-time-picker"/>
 		                    <div class="input-group-append" data-target="#log-out-time-picker" data-toggle="datetimepicker">
 		                        <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
 		                    </div>
@@ -107,12 +116,12 @@
 					  </div>
 
 					  <div class="form-group row">
-					    <label for="name" class="col-sm-2 col-form-label">Task</label>
+					    <label for="task_lebel" class="col-sm-2 col-form-label">Task</label>
 					    <div class="col-sm-10">
 					    	<fieldset class="todos_labels">
 						      <div class="repeatable row"></div>
 								<div class="form-group mt-1" style="text-align:center;">
-									<input type="button" value="Add More Task" class="btn btn-success btn-sm add" align="center">
+									<input id="task_lebel" type="button" value="Add More Task" class="btn btn-success btn-sm add" align="center">
 								</div>
 							</fieldset>
 					    </div>
@@ -127,7 +136,7 @@
 
 					  <div class="form-group row">
 					    <div class="col-sm-10 offset-sm-1 text-center">
-					      <button type="submit" class="btn btn-primary">Genarate</button>
+					      <button type="submit" class="btn btn-primary" name="submit">Genarate</button>
 					    </div>
 					  </div>
 					</form>
