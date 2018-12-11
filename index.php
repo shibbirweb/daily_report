@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 				  </div>
 				  <div class="card-body">
 
-				    <form method="POST" action="">
+				    <form method="POST" action="" id="report-form">
 					  <div class="form-group row">
 					    <label for="name" class="col-sm-2 col-form-label">Name</label>
 					    <div class="col-sm-10">
@@ -158,7 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					<table style="font-family: Calibri, sans-serif; border:1px solid black; border-collapse: collapse;" align="center" width="100%">
 						<tr>
 							<td style="border: 1px solid black; padding: 3px 5px; background-color: #BFBFBF;">Name</td>
-							<td style="border: 1px solid black; padding: 3px 5px;">MD. Shibbir Ahmed</td>
+							<td style="border: 1px solid black; padding: 3px 5px;" id="doc_name">MD. Shibbir Ahmed</td>
 						</tr>
 						<tr>
 							<td style="border: 1px solid black; padding: 3px 5px; background-color: #BFBFBF;">Date</td>
