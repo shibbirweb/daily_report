@@ -162,19 +162,19 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 						</tr>
 						<tr>
 							<td style="border: 1px solid black; padding: 3px 5px; background-color: #BFBFBF;">Date</td>
-							<td style="border: 1px solid black; padding: 3px 5px;">2018-12-09</td>
+							<td style="border: 1px solid black; padding: 3px 5px;" id="doc_date">2018-12-09</td>
 						</tr>
 						<tr>
 							<td style="border: 1px solid black; padding: 3px 5px; background-color: #BFBFBF;">Shift</td>
-							<td style="border: 1px solid black; padding: 3px 5px;">02:00 PM  to 6:00 PM</td>
+							<td style="border: 1px solid black; padding: 3px 5px;" id="doc_shift_time">02:00 PM  to 6:00 PM</td>
 						</tr>
 						<tr>
 							<td style="border: 1px solid black; padding: 3px 5px; background-color: #BFBFBF;">Work Arena</td>
-							<td style="border: 1px solid black; padding: 3px 5px;">Web Development</td>
+							<td style="border: 1px solid black; padding: 3px 5px;" id="doc_work_arena">Web Development</td>
 						</tr>
 						<tr>
 							<td style="border: 1px solid black; padding: 3px 5px; background-color: #BFBFBF;">Reporting to</td>
-							<td style="border: 1px solid black; padding: 3px 5px;">Engr. Rony Debnath</td>
+							<td style="border: 1px solid black; padding: 3px 5px;" id="doc_reporting_to">Engr. Rony Debnath</td>
 						</tr>
 					</table>
 				</div>
@@ -243,7 +243,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 				<div class="comment-section">
 					<h3 style="text-align: center; font-family: Calibri, sans-serif">Comment</h3>
 					<div style="border: 1px solid #000; padding: 5px; font-family: Calibri, sans-serif">
-						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+						<p id="doc_comment">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
 					</div>
 				</div>
 				<!-- Comment End -->	

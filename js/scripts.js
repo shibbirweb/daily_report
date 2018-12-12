@@ -50,8 +50,6 @@ jQuery(document).ready(function($) {
 
     /*Dynamic Part Start*/
 
-
-
     $("#report-form").on("submit", function(e){
     	e.preventDefault();
     	var name, date, shiftStartTime, shiftEndTime, workArena, reportingTo, logInTime, logOutTime, tasks, comment;
@@ -66,7 +64,12 @@ jQuery(document).ready(function($) {
     	logOutTime = $("#log_out_time").val();
     	comment = $('#comment').val();
 
-        
+        $('#doc_name').text(name);
+        $('#doc_date').text(date);
+        $('#doc_shift_time').text(shiftStartTime+' to '+shiftEndTime);
+        $('#doc_work_arena').text(workArena);
+        $('#doc_reporting_to').text(reportingTo);
+        $('#doc_comment').text(comment);
 
     });
     /*Dynamic Part End*/
