@@ -8,8 +8,8 @@ function getTaskDescription(id, description){
     allTasksDescription[id] = [description];    
 }
 function taskNameDesDelete(id){
-    delete allTasksName[id]; 
-    delete allTasksDescription[id]; 
+    allTasksName.splice(id, 1); 
+    allTasksDescription.splice(id,1); 
 }
 
 
@@ -70,6 +70,22 @@ jQuery(document).ready(function($) {
         $('#doc_work_arena').text(workArena);
         $('#doc_reporting_to').text(reportingTo);
         $('#doc_comment').text(comment);
+
+        var tableRow = '';
+        var i;
+        var serial = 1;
+        if (allTasksName.length > 0 || allTasksDescription.length > 0) {
+            for(i=0; i<allTasksName.length; i++){
+                tableRow += '<tr><td style="border: 1px solid black; padding: 3px 5px;">'+ serial++ +'</td><td style="border: 1px solid black; padding: 3px 5px;">'+allTasksName[i]+'</td><td style="border: 1px solid black; padding: 3px 5px;">'+allTasksDescription[i]+'</td></tr>';  
+            }
+        }else{
+            tableRow += '<tr><td style="border: 1px solid black; padding: 3px 5px;" colspan="3" align="center">No task</td></tr>'; 
+        }
+        
+
+
+        $('#doc_task_list').html(tableRow);
+
 
     });
     /*Dynamic Part End*/

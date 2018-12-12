@@ -213,27 +213,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 							<th style="border: 1px solid black; padding: 3px 5px; background-color: #4472C4; color: white;">Activity Log</th>
 							<th style="border: 1px solid black; padding: 3px 5px; background-color: #4472C4; color: white;">Description</th>
 						</thead>
-						<tbody>
-							<tr>
-								<td style="border: 1px solid black; padding: 3px 5px;">1</td>
-								<td style="border: 1px solid black; padding: 3px 5px;">Study</td>
-								<td style="border: 1px solid black; padding: 3px 5px;">Javascript</td>
-							</tr>
-							<tr>
-								<td style="border: 1px solid black; padding: 3px 5px;">1</td>
-								<td style="border: 1px solid black; padding: 3px 5px;">Study</td>
-								<td style="border: 1px solid black; padding: 3px 5px;">Javascript</td>
-							</tr>
-							<tr>
-								<td style="border: 1px solid black; padding: 3px 5px;">1</td>
-								<td style="border: 1px solid black; padding: 3px 5px;">Study</td>
-								<td style="border: 1px solid black; padding: 3px 5px;">Javascript</td>
-							</tr>
-							<tr>
-								<td style="border: 1px solid black; padding: 3px 5px;">1</td>
-								<td style="border: 1px solid black; padding: 3px 5px;">Study</td>
-								<td style="border: 1px solid black; padding: 3px 5px;">Javascript</td>
-							</tr>
+						<tbody id="doc_task_list">
+
+
+							
+
+
 						</tbody>	
 					</table>
 				</div>
@@ -265,10 +250,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	<script type="text/template" id="todos_labels">
 		<div class="col-sm-6   field-group">
 			<div class=" mt-1">
-	      		<input type="text" class="form-control" id="task-name-{?}" name="task[{?}][name]" placeholder="Task Name" onblur="getTaskName('{?}',this.value);">
+	      		<input type="text" class="form-control" id="task-name-{?}" name="task[{?}][name]" placeholder="Task Name" onblur="getTaskName('{?}',this.value);" required="1">
 	      	</div>
 	      	<div class=" mt-1">
-	      		<textarea class="form-control" onblur="getTaskDescription('{?}',this.value);" id="task-description-{?}" name="task[{?}][description]" rows="3" placeholder="Task Description"></textarea>
+	      		<textarea class="form-control" onblur="getTaskDescription('{?}',this.value);" id="task-description-{?}" name="task[{?}][description]" rows="3" placeholder="Task Description" required="1"></textarea>
 	      	</div>
 	      	<div class=" mt-1">
 	      		<label for="">Action</label><br>
