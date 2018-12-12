@@ -1,3 +1,18 @@
+
+var allTasksName = [];
+var allTasksDescription = [];
+function getTaskName(id, name){
+    allTasksName[id] = [name];    
+}
+function getTaskDescription(id, description){
+    allTasksDescription[id] = [description];    
+}
+function taskNameDesDelete(id){
+    delete allTasksName[id]; 
+    delete allTasksDescription[id]; 
+}
+
+
 jQuery(document).ready(function($) {
 
 	/*word export start*/
@@ -35,15 +50,27 @@ jQuery(document).ready(function($) {
 
     /*Dynamic Part Start*/
 
+
+
     $("#report-form").on("submit", function(e){
     	e.preventDefault();
     	var name, date, shiftStartTime, shiftEndTime, workArena, reportingTo, logInTime, logOutTime, tasks, comment;
 
     	name = $("#name").val();
-    	date = $("#date")
-    	alert(name);
+    	date = $("#date").val();
+    	shiftStartTime = $("#shift_start").val();
+    	shiftEndTime = $("#shift_end").val();
+    	workArena = $("#work_arena").val();
+    	reportingTo = $("#reporting_to").val();
+    	logInTime = $("#log_in_time").val();
+    	logOutTime = $("#log_out_time").val();
+    	comment = $('#comment').val();
+
+        
+
     });
     /*Dynamic Part End*/
+
 
     });
 

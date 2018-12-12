@@ -17,7 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
    <link rel="stylesheet" href="css/tempusdominus-bootstrap-4.min.css" />
    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" />
 	<link rel="stylesheet" href="css/style.css" />
-
 	<title>Daily Report</title>
 </head>
 <body>
@@ -137,6 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					  <div class="form-group row">
 					    <div class="col-sm-10 offset-sm-1 text-center">
 					      <button type="submit" class="btn btn-primary" name="submit">Genarate</button>
+					      <button type="button" class="btn btn-primary"  id="clickMe">Click Me</button>
 					    </div>
 					  </div>
 					</form>
@@ -253,8 +253,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 	<a class="btn btn-success btn-sm mt-2 word-export" href="javascript:void(0)"> Export as .doc </a> 
 	</div>
-
-	<script type="text/javascript" src="js/jquery-3.3.1.min.js" ></script>
+<script type="text/javascript" src="js/jquery-3.3.1.min.js" ></script>
     <script type="text/javascript" src="js/popper.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/moment.min.js"></script>
@@ -262,18 +261,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	<script type="text/javascript" src="js/FileSaver.js"></script>
 	<script type="text/javascript" src="js/jquery.wordexport.js"></script>
 	<script type="text/javascript" src="js/jquery.repeatable.js"></script>
-	
+
 	<script type="text/template" id="todos_labels">
 		<div class="col-sm-6   field-group">
 			<div class=" mt-1">
-	      		<input type="text" class="form-control" id="task-name-{?}" name="task[{?}][name]" placeholder="Task Name">
+	      		<input type="text" class="form-control" id="task-name-{?}" name="task[{?}][name]" placeholder="Task Name" onblur="getTaskName('{?}',this.value);">
 	      	</div>
 	      	<div class=" mt-1">
-	      		<textarea class="form-control" id="task-description-{?}" name="task[{?}][description]" rows="3" placeholder="Task Description"></textarea>
+	      		<textarea class="form-control" onblur="getTaskDescription('{?}',this.value);" id="task-description-{?}" name="task[{?}][description]" rows="3" placeholder="Task Description"></textarea>
 	      	</div>
 	      	<div class=" mt-1">
 	      		<label for="">Action</label><br>
-	  			<input type="button" class="btn btn-sm btn-danger span-2 mb-2 delete" value="Remove" />
+	  			<input onclick="taskNameDesDelete({?})" type="button" class="btn btn-sm btn-danger span-2 mb-2 delete" value="Remove" />
       	</div>
       </div>
 	</script>
