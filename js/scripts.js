@@ -94,7 +94,9 @@ jQuery(document).ready(function($) {
         }
 
         var getLateTime = timeDuration(shiftStartTime, logInTime);
-        if (getLateTime.hours() >= 0 && getLateTime.minutes() >= 0) {
+        if (getLateTime.hours() == 0 && getLateTime.minutes() == 0) {
+            lateTime = '';
+        }else if (getLateTime.hours() >= 0 && getLateTime.minutes() >= 0) {
                 var min, hour;
                 if(getLateTime.hours() > 1){
                     hour = " hours ";
@@ -109,6 +111,8 @@ jQuery(document).ready(function($) {
 
                 if(getLateTime.hours() == 0){
                     lateTime = getLateTime.minutes()+min;
+                }else if (getLateTime.minutes() == 0) {
+                    lateTime = getLateTime.hours()+hour;
                 }else {
                     lateTime = getLateTime.hours()+hour+ getLateTime.minutes()+min;
                 }
@@ -117,29 +121,42 @@ jQuery(document).ready(function($) {
         }
         $('#doc_late').text(lateTime);
 
-        var getEarlyTime = timeDuration(shiftEndTime, logOutTime);
-        if (getEarlyTime.hours() < 0 && getEarlyTime.minutes() < 0) {
-            var min, hour;
-            absHour = Math.abs(getEarlyTime.hours());
-            absMin = Math.abs(getEarlyTime.minutes());
+    // early time
+    if (logOutTime == '') {
+         earlyLeaveTime = '';
+    }else{
+            var getEarlyTime = timeDuration(shiftEndTime, logOutTime);
+            if (getEarlyTime.hours() < 1 && getEarlyTime.minutes() < 1) {
+                var min, hour;
+                absHour = Math.abs(getEarlyTime.hours());
+                absMin = Math.abs(getEarlyTime.minutes());
 
-            if(absHour > 1){
-                hour = " hours ";
+                if(absHour > 1){
+                    hour = " hours ";
+                }else{
+                    hour = " hour ";
+                }
+                if (absMin > 1) {
+                    min = " minutes";
+                }else{
+                    min = " minute";
+                }
+
+                if (absHour == 0) {
+                    earlyLeaveTime = absMin+min;
+                }else if(absMin == 0){
+                    earlyLeaveTime = absHour+hour;
+                }else{
+                    earlyLeaveTime = absHour+hour+ absMin+min;
+                }
             }else{
-                hour = " hour ";
+                earlyLeaveTime = '';
             }
-            if (absMin > 1) {
-                min = " minutes";
-            }else{
-                min = " minute";
-            }
-            earlyLeaveTime = absHour+hour+ absMin+min;
-        }else{
-            earlyLeaveTime = '';
         }
 
         $('#doc_early_leave').text(earlyLeaveTime);
 
+        //task name
         var tableRow = '';
         var i;
         var serial = 1;
