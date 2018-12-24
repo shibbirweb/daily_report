@@ -2,6 +2,7 @@
 /*Task initial start*/
 var allTasksName = [];
 var allTasksDescription = [];
+var allTasksStatus = [];
 
 function getTaskName(id, name){
     allTasksName[id] = [name];    
@@ -9,6 +10,10 @@ function getTaskName(id, name){
 
 function getTaskDescription(id, description){
     allTasksDescription[id] = [description];    
+}
+
+function getTaskStatus(id, status){
+    allTasksStatus[id] = [status];    
 }
 
 function taskNameDesDelete(id){
@@ -19,6 +24,10 @@ function taskNameDesDelete(id){
     
     if (typeof(allTasksDescription[id]) != 'undefined') {
         allTasksDescription.splice(id,1); 
+    }
+
+    if (typeof(allTasksStatus[id]) != 'undefined') {
+        allTasksStatus.splice(id,1); 
     }
 }
 /*Task initial end*/
@@ -55,14 +64,15 @@ jQuery(document).ready(function($) {
     /*Dynamic Part Start*/
 
     $("#report-form").on("submit", function(e){
-    	e.preventDefault();
-    	dynamicDocGenarator();
-        $("#page-content").wordExport('Daily Report of '+ $("#name").val()+' date_'+$("#date").val());
+    	//e.preventDefault();
+    	//dynamicDocGenarator();
+        //$("#page-content").wordExport('Daily Report of '+ $("#name").val()+' date_'+$("#date").val());
     });
 
     $('#doc_perview').on("click", function(){
         dynamicDocGenarator();
     });
+
 
 
 

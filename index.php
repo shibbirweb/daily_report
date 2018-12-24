@@ -1,11 +1,5 @@
 <?php 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-	echo "<pre>";
-	print_r($_POST);
-	echo "</pre>";
-	exit();
-}
-
+require_once 'process.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -115,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					  </div>
 
 					  <div class="form-group row">
-					    <label for="task_lebel" class="col-sm-2 col-form-label">Task</label>
+					    <label for="" class="col-sm-2 col-form-label">Task</label>
 					    <div class="col-sm-10">
 					    	<fieldset class="todos_labels">
 						      <div class="repeatable row"></div>
@@ -129,14 +123,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					  <div class="form-group row">
 					    <label for="comment" class="col-sm-2 col-form-label">Comment</label>
 					    <div class="col-sm-10">
-					      <textarea class="form-control" id="comment" name="commnet" rows="3" placeholder="Comment"></textarea>
+					      <textarea class="form-control" id="comment" name="comment" rows="3" placeholder="Comment"></textarea>
 					    </div>
 					  </div>
 
 					  <div class="form-group row">
 					    <div class="col-sm-10 offset-sm-1 text-center">
-					      <button type="submit" class="btn btn-success" name="submit">Genarate</button>
-					      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"  id="doc_perview">Preview</button>
+					      <button type="submit" class="btn btn-success" name="send-mail"><i class="fa fa-paper-plane"></i> Send Mail</button>
+					      <button type="submit" class="btn btn-primary" name="genarate">Genarate</button>
+					      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#doc-preview-modal"  id="doc_perview">Preview</button>
 					    </div>
 					  </div>
 					</form>
@@ -147,13 +142,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			</div><!-- end form-area -->
 		</div>
 <!-- ============================================ -->
-<hr/>
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="doc-preview-modal" tabindex="-1" role="dialog" aria-labelledby="doc-preview-modal-lable" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Daily Report Preview</h5>
+        <h5 class="modal-title" id="doc-preview-modal-lable">Daily Report Preview</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -267,6 +261,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	      	</div>
 	      	<div class=" mt-1">
 	      		<textarea class="form-control" onblur="getTaskDescription('{?}',this.value);" id="task-description-{?}" name="task[{?}][description]" rows="3" placeholder="Task Description" required="1"></textarea>
+	      	</div>
+	      	<div class=" mt-1">
+	      		<label for="task-status-{?}">Task Status</label><br>
+	      		<select class="form-control" id="task-status-{?}" name="task[{?}][status]" required="1" onchange="getTaskStatus('{?}',this.value);">
+					<option value="">--Select Status--</option>
+					<option value="Pending">Pending</option>
+					<option value="Complete">Complete</option>
+					<option value="Processing">Processing</option>
+	      		</select>
 	      	</div>
 	      	<div class=" mt-1">
 	      		<label for="">Action</label><br>
