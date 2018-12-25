@@ -23,38 +23,75 @@ $section = $phpWord->addSection();
 
 $section->addTitle("DAILY ACTIVITY UPDATE", 1);
 
+$fancyTableStyleName = 'Simple Table';
+$fancyTableStyle =  array('borderSize' => 2, 'borderColor' => '000000', 'cellMargin' => \PhpOffice\PhpWord\Shared\Converter::pointToTwip(2));
+$fancyTableFirstRowStyle = array('borderBottomSize' => 2, 'borderBottomColor' => '000000', 'bgColor' => '66BBFF');
+$fancyTableCellStyle = array('valign' => 'center');
+$fancyTableFontStyle = array('bold' => true);
+$phpWord->addTableStyle($fancyTableStyleName, $fancyTableStyle);
 
+//basic info table
+$basicInfoTable = $section->addTable($fancyTableStyleName);
+$tableFontStlye = array('name' => 'Calibri', 'size' => 12);
+$tableParaStyle = array('spaceAfter' => 0);
 
-$simpleTableStyle = array('borderSize' => 1, 'borderColor' => '000000', 'cellMargin' => 0, 'alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER, 'cellSpacing' => 0);
-$spanTableStyleName = 'Colspan Rowspan';
-$phpWord->addTableStyle($spanTableStyleName, $simpleTableStyle);
-$table = $section->addTable($spanTableStyleName);
-$table->addRow();
-$table->addCell()->addText("Name");
-$table->addCell()->addText("Shibbir Ahmed");
-$table->addRow();
-$table->addCell()->addText("Date");
-$table->addCell()->addText("2018-12-24");
-$table->addRow();
-$table->addCell()->addText("Shift");
-$table->addCell()->addText("2:00 PM to 6:00 PM");
-$table->addRow();
-$table->addCell()->addText("Work Arena");
-$table->addCell()->addText("Web Development");
-$table->addRow();
-$table->addCell()->addText("Reporting to");
-$table->addCell()->addText("Engr. Rony Debnath");
-$table->addRow();
-$table->addCell()->addText("Text Run");
-$table->addCell()->addText("Engr. Rony Debnath");
+$basicInfoTable->addRow();
+ $basicInfoTable->addCell(5000)->addText("Name", $tableFontStlye, $tableParaStyle );
+ $basicInfoTable->addCell(5000)->addText("Shibbir Ahmed", $tableFontStlye, $tableParaStyle );
+$basicInfoTable->addRow();
+ $basicInfoTable->addCell(5000)->addText("Date", $tableFontStlye, $tableParaStyle );
+ $basicInfoTable->addCell(5000)->addText("Date goes here", $tableFontStlye, $tableParaStyle );
+$basicInfoTable->addRow();
+ $basicInfoTable->addCell(5000)->addText("Work Arena", $tableFontStlye, $tableParaStyle );
+ $basicInfoTable->addCell(5000)->addText("Web Development", $tableFontStlye, $tableParaStyle );
+$basicInfoTable->addRow();
+ $basicInfoTable->addCell(5000)->addText("Reporting to", $tableFontStlye, $tableParaStyle );
+ $basicInfoTable->addCell(5000)->addText("Engr Rony Debnath", $tableFontStlye, $tableParaStyle );
 
+$section->addTextBreak(2);
 
+//check in out table 
+$checkInOutTable = $section->addTable($fancyTableStyleName);
 
-$section->addTextBreak(1);
+$checkInOutTable->addRow();
+ $checkInOutTable->addCell(1000, array('gridSpan' => 2, 'valign' => 'center'))->addText("Check in/Check out", $tableFontStlye, array('spaceAfter' => 0, 'alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER ) );
+$checkInOutTable->addRow();
+ $checkInOutTable->addCell(5000)->addText("Log in", $tableFontStlye, $tableParaStyle );
+ $checkInOutTable->addCell(5000)->addText("Log in time will go here", $tableFontStlye, $tableParaStyle );
+$checkInOutTable->addRow();
+ $checkInOutTable->addCell(5000)->addText("Log out", $tableFontStlye, $tableParaStyle );
+ $checkInOutTable->addCell(5000)->addText("Log out time will go here", $tableFontStlye, $tableParaStyle );
+$checkInOutTable->addRow();
+ $checkInOutTable->addCell(5000)->addText("Late", $tableFontStlye, $tableParaStyle );
+ $checkInOutTable->addCell(5000)->addText("Late time will go here", $tableFontStlye, $tableParaStyle );
+$checkInOutTable->addRow();
+ $checkInOutTable->addCell(5000)->addText("Early Leave", $tableFontStlye, $tableParaStyle );
+ $checkInOutTable->addCell(5000)->addText("Early leave time will go here", $tableFontStlye, $tableParaStyle );
 
+//daily activity log
+$section->addTextBreak(2);
+$section->addText("Daily Activity Log", array('name' => 'Calibri', 'size' => 12), array('spaceAfter' => 0, 'alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER) );;
 
+$activityLogTable = $section->addTable($fancyTableStyleName);
+$tableFontStlye = array('name' => 'Calibri', 'size' => 12);
+$tableParaStyle = array('spaceAfter' => 0);
 
+$activityTableFirstRowStyle = array('valign' => 'center', 'bgColor' => '4472C4');
+$activityTableFirstCellFontStyle =  array('name' => 'Calibri', 'size' => 12,  'color' => 'FFFFFF');
+$activityTableFirstCellParaStyle =array('spaceAfter' => 0, 'alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER);
+$activityLogTable->addRow();
+ $activityLogTable->addCell(1000, $activityTableFirstRowStyle)->addText("SL",$activityTableFirstCellFontStyle, $activityTableFirstCellParaStyle);
+ $activityLogTable->addCell(7000, $activityTableFirstRowStyle)->addText("Activity Log",$activityTableFirstCellFontStyle, $activityTableFirstCellParaStyle);
+ $activityLogTable->addCell(9000, $activityTableFirstRowStyle)->addText("Description",$activityTableFirstCellFontStyle, $activityTableFirstCellParaStyle);
+ $activityLogTable->addCell(3000, $activityTableFirstRowStyle)->addText("Status",$activityTableFirstCellFontStyle, $activityTableFirstCellParaStyle);
 
+$activityLogTable->addRow();
+ $activityLogTable->addCell(1000)->addText("Log in", $tableFontStlye, $tableParaStyle );
+ $activityLogTable->addCell(7000)->addText("Log in time will go here", $tableFontStlye, $tableParaStyle );
+ $activityLogTable->addCell(9000)->addText("Log in time will go here", $tableFontStlye, $tableParaStyle );
+ $activityLogTable->addCell(3000)->addText("Log in time will go here", $tableFontStlye, $tableParaStyle );
+
+/*Selected table end*/
 
 //info table section
 /*$infoTableSection = '<table style="border: 1px #000000 solid; width: 100%; font-family: Calibri; font-size: 16px; " align="center">
