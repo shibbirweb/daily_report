@@ -4,6 +4,9 @@ require_once 'functions.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
 	if (array_key_exists('send-mail', $_POST)) {
+
+		debug($_POST['email-to']);
+		exit();
 		$name = $date = $shift_start = $shift_end = $work_arena = $reporting_to = $log_in_time = $log_out_time = $tasks = $comment = '';
 
 		$name = $_POST['name'];
@@ -26,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		/*doc generate end*/
 
 		/*send email start*/
-		//require_once 'send_mail.php';
+		require_once 'send_mail.php';
 		/*send email end*/
 
 

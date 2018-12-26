@@ -234,5 +234,18 @@ jQuery(document).ready(function($) {
         }
 
 
+        /*radio button on change for email*/
+        $('#email-options').show('slow');
+        $('#report-form input[type=radio][name=send-mail]').on('change',function() {
+            if (this.value == 1) {
+                $('#email-options').show('slow');
+                $('#send-mail').removeAttr('disabled');
+            }
+            else if (this.value == 0) {
+                $('#email-options').hide('slow');
+                $('#send-mail').attr("disabled","disabled");
+            }
+        });
+
     });
 

@@ -10,6 +10,7 @@ require_once 'process.php';
     <link rel="stylesheet" href="css/bootstrap.min.css">
    <link rel="stylesheet" href="css/tempusdominus-bootstrap-4.min.css" />
    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" />
+   <link rel="stylesheet" type="text/css" href="css/BsMultiSelect.min.css">
 	<link rel="stylesheet" href="css/style.css" />
 	<title>Daily Report</title>
 </head>
@@ -127,13 +128,68 @@ require_once 'process.php';
 					    </div>
 					  </div>
 
+					  <fieldset class="form-group">
+					    <div class="row">
+					      <legend class="col-form-label col-sm-2 pt-0">Send Mail?</legend>
+					      <div class="col-sm-10">
+					        <div class="form-check form-check-inline">
+					          <input class="form-check-input" type="radio" name="send-mail" id="email-yes" value="1" checked>
+					          <label class="form-check-label" for="email-yes">Yes</label>
+					        </div>
+					        <div class="form-check form-check-inline">
+					          <input class="form-check-input" type="radio" name="send-mail" id="email-no" value="0">
+					          <label class="form-check-label" for="email-no">No</label>
+					        </div>
+					      </div>
+					    </div>
+					  </fieldset>
+
+					  <fieldset class="form-group" id="email-options" style="display: none;">
+					    <div class="row">
+					      <label for="send-from-email" class="col-sm-2 col-form-label">Send From</label>
+					    <div class="col-sm-10">
+					      <input type="email" class="form-control" id="send-from-email" placeholder="Send From" aria-describedby="send-from-email-help-block">
+					      <small id="send-from-email-help-block" class="form-text text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> Use only gmail address</small>
+					    </div>
+					    </div>
+					    <div class="row mt-2">
+					      <label for="send-from-email-password" class="col-sm-2 col-form-label">Password</label>
+					    <div class="col-sm-10">
+					      <input type="password" class="form-control" id="send-from-email-password" placeholder="Email password" aria-describedby="send-from-email-password-help-block">
+					      <small id="send-from-email-password-help-block" class="form-text text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> Your password will not store in server</small>
+					    </div>
+					    </div>
+					    <div class="row mt-2">
+					      <label for="send-from-email-subject" class="col-sm-2 col-form-label">Subject</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" id="send-from-email-subject" placeholder="Email subject">
+					    </div>
+					    </div>
+					    <div class="row mt-2">
+					      <label for="send-to-email" class="col-sm-2 col-form-label">Send To </label>
+					    <div class="col-sm-10">
+					     <select name="email-to[]" id="email-select" class="form-control"  multiple="multiple" style="display: none;">
+							<option value="ikram.akand@gmail.com">Rayms Raymon</option>
+							<option value="bjayanta.me@gmail.com">Jayanta Biswas</option>
+							<option value="ronycse9@gmail.com">Engr. Rony Debnath</option>
+							<option value="arafkarim@gmail.com">Araf Karim</option>
+							<option value="ashrafulbdit@gmail.com">Md Ashraful Islam</option>
+							<option value="akhteruzzaman44@gmail.com">Md. Akhteruzzaman</option>
+							<option value="rtr.amor@gmail.com">Amor Chandra Das</option>
+						</select>
+					    </div>
+					    </div>
+					  </fieldset>
+
 					  <div class="form-group row">
 					    <div class="col-sm-10 offset-sm-1 text-center">
-					      <button type="submit" class="btn btn-success" name="send-mail"><i class="fa fa-paper-plane"></i> Send Mail</button>
+					      <button type="submit" class="btn btn-success" id="send-mail" name="send-mail"><i class="fa fa-paper-plane"></i> Send Mail</button>
 					      <button type="submit" class="btn btn-primary" name="genarate">Genarate</button>
 					      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#doc-preview-modal"  id="doc_perview">Preview</button>
 					    </div>
 					  </div>
+
+
 					</form>
 
 				  </div>
@@ -253,6 +309,7 @@ require_once 'process.php';
 	<script type="text/javascript" src="js/FileSaver.js"></script>
 	<script type="text/javascript" src="js/jquery.wordexport.js"></script>
 	<script type="text/javascript" src="js/jquery.repeatable.js"></script>
+	<script type="text/javascript" src="js/BsMultiSelect.min.js"></script>
 
 	<script type="text/template" id="todos_labels">
 		<div class="col-sm-6   field-group">
@@ -278,5 +335,6 @@ require_once 'process.php';
       </div>
 	</script>
 	<script type="text/javascript" src="js/scripts.js"></script>
+	<script>$("#email-select").bsMultiSelect();</script>
 </body>
 </html>

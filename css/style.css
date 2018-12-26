@@ -1,0 +1,19 @@
+.dashboardcode-bsmultiselect ul:first-child li {
+    background-color: #343a40;
+    color: white;
+    margin-right: 5px;
+    padding: 2px 5px !important;
+    margin: 2px;
+    font-size: 12px;
+}
+.dashboardcode-bsmultiselect ul:first-child li:last-child{
+	background: white;
+}
+
+
+.dashboardcode-bsmultiselect  ul:first-child li span{
+	margin-right: 2px;
+}
+.dashboardcode-bsmultiselect  ul:first-child li  button{
+	color: white;
+}
