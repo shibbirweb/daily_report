@@ -95,7 +95,7 @@ if(!empty($tasks) && is_array($tasks)){
     $serial = 1;
     foreach ($tasks as $task) {
     $activityLogTable->addRow();
-    $activityLogTable->addCell(1050)->addText($serial, $tableFontStlye, $activityTableFirstCellParaStyle );
+    $activityLogTable->addCell(1050)->addText($serial++, $tableFontStlye, $activityTableFirstCellParaStyle );
     $activityLogTable->addCell(2950)->addText($task['name'], $tableFontStlye, $activityTableFirstCellParaStyle );
     $activityLogTable->addCell(3150)->addText($task['description'], $tableFontStlye, $tableParaStyle );
     $activityLogTable->addCell(2250)->addText($task['status'], $tableFontStlye, $activityTableFirstCellParaStyle );
@@ -112,7 +112,7 @@ if(!empty($comment)){
     $section->addText("Comment", array('name' => 'Calibri', 'size' => 16), array('spaceAfter' => 0) );
     $commentTable = $section->addTable($fancyTableStyleName);
     $commentTable->addRow();
-    $commentTable->addCell(9400)->addText("Comment will go here", $tableFontStlye, array('spaceAfter' => 0) );
+    $commentTable->addCell(9400)->addText($comment, $tableFontStlye, array('spaceAfter' => 0) );
 }
 
 // Saving the document as OOXML file...

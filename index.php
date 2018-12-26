@@ -133,11 +133,11 @@ require_once 'process.php';
 					      <legend class="col-form-label col-sm-2 pt-0">Send Mail?</legend>
 					      <div class="col-sm-10">
 					        <div class="form-check form-check-inline">
-					          <input class="form-check-input" type="radio" name="send-mail" id="email-yes" value="1" checked>
+					          <input class="form-check-input" type="radio" name="send_mail_permission" id="email-yes" value="1" checked>
 					          <label class="form-check-label" for="email-yes">Yes</label>
 					        </div>
 					        <div class="form-check form-check-inline">
-					          <input class="form-check-input" type="radio" name="send-mail" id="email-no" value="0">
+					          <input class="form-check-input" type="radio" name="send_mail_permission" id="email-no" value="0">
 					          <label class="form-check-label" for="email-no">No</label>
 					        </div>
 					      </div>
@@ -146,38 +146,46 @@ require_once 'process.php';
 
 					  <fieldset class="form-group" id="email-options" style="display: none;">
 					    <div class="row">
-					      <label for="send-from-email" class="col-sm-2 col-form-label">Send From</label>
+					      <label for="send_from_mail" class="col-sm-2 col-form-label">Send From</label>
 					    <div class="col-sm-10">
-					      <input type="email" class="form-control" id="send-from-email" placeholder="Send From" aria-describedby="send-from-email-help-block">
+					      <input type="email" class="form-control" name="send_from_mail" id="send_from_mail" placeholder="Send From" aria-describedby="send-from-email-help-block">
 					      <small id="send-from-email-help-block" class="form-text text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> Use only gmail address</small>
 					    </div>
 					    </div>
 					    <div class="row mt-2">
 					      <label for="send-from-email-password" class="col-sm-2 col-form-label">Password</label>
 					    <div class="col-sm-10">
-					      <input type="password" class="form-control" id="send-from-email-password" placeholder="Email password" aria-describedby="send-from-email-password-help-block">
+					      <input type="password" class="form-control" name="send_from_mail_password" id="send-from-email-password" placeholder="Email password" aria-describedby="send-from-email-password-help-block">
 					      <small id="send-from-email-password-help-block" class="form-text text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> Your password will not store in server</small>
 					    </div>
 					    </div>
 					    <div class="row mt-2">
-					      <label for="send-from-email-subject" class="col-sm-2 col-form-label">Subject</label>
-					    <div class="col-sm-10">
-					      <input type="text" class="form-control" id="send-from-email-subject" placeholder="Email subject">
-					    </div>
+					      <label for="send-to-email" class="col-sm-2 col-form-label">Send To </label>
+						    <div class="col-sm-10">
+						     <select name="mail_to[]" id="email-select" class="form-control"  multiple="multiple" style="display: none;">
+								<!-- <option value="ikram.akand@gmail.com">Rayms Raymon</option>
+								<option value="bjayanta.me@gmail.com">Jayanta Biswas</option>
+								<option value="ronycse9@gmail.com">Engr. Rony Debnath</option>
+								<option value="arafkarim@gmail.com">Araf Karim</option>
+								<option value="ashrafulbdit@gmail.com">Md Ashraful Islam</option>
+								<option value="akhteruzzaman44@gmail.com">Md. Akhteruzzaman</option>
+								<option value="rtr.amor@gmail.com">Amor Chandra Das</option> -->
+								<option value="shibbirweb@gmail.com">Shibbir Ahmed</option>
+								<option value="happycoding@shayzam.net">Happy Coding</option>
+							</select>
+						    </div>
 					    </div>
 					    <div class="row mt-2">
-					      <label for="send-to-email" class="col-sm-2 col-form-label">Send To </label>
-					    <div class="col-sm-10">
-					     <select name="email-to[]" id="email-select" class="form-control"  multiple="multiple" style="display: none;">
-							<option value="ikram.akand@gmail.com">Rayms Raymon</option>
-							<option value="bjayanta.me@gmail.com">Jayanta Biswas</option>
-							<option value="ronycse9@gmail.com">Engr. Rony Debnath</option>
-							<option value="arafkarim@gmail.com">Araf Karim</option>
-							<option value="ashrafulbdit@gmail.com">Md Ashraful Islam</option>
-							<option value="akhteruzzaman44@gmail.com">Md. Akhteruzzaman</option>
-							<option value="rtr.amor@gmail.com">Amor Chandra Das</option>
-						</select>
+					      <label for="send-from-email-subject" class="col-sm-2 col-form-label">Subject</label>
+						    <div class="col-sm-10">
+						      <input type="text"name="mail_subject" class="form-control" id="send-from-email-subject" placeholder="Email subject">
+						    </div>
 					    </div>
+					    <div class="row mt-2">
+					      <label for="email_body" class="col-sm-2 col-form-label">Message Body</label>
+						    <div class="col-sm-10">
+						      <textarea class="form-control" id="email_body" name="email_body" rows="5" placeholder="Email body"></textarea>
+						    </div>
 					    </div>
 					  </fieldset>
 
@@ -310,6 +318,7 @@ require_once 'process.php';
 	<script type="text/javascript" src="js/jquery.wordexport.js"></script>
 	<script type="text/javascript" src="js/jquery.repeatable.js"></script>
 	<script type="text/javascript" src="js/BsMultiSelect.min.js"></script>
+	<script type="text/javascript" src="js/ckeditor.js"></script>
 
 	<script type="text/template" id="todos_labels">
 		<div class="col-sm-6   field-group">
@@ -334,7 +343,32 @@ require_once 'process.php';
       	</div>
       </div>
 	</script>
+	<script>
+		$(document).ready(function(){
+			$("#email-select").bsMultiSelect();
+			ClassicEditor
+			    .create( document.querySelector( '#email_body' ), {
+			        toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList' ],
+			        heading: {
+			            options: [
+			                { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+			                { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
+			                { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
+			                { model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3' },
+			                { model: 'heading4', view: 'h4', title: 'Heading 4', class: 'ck-heading_heading4' },
+			                { model: 'heading5', view: 'h5', title: 'Heading 5', class: 'ck-heading_heading5' },
+			                { model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' }
+			            ]
+			        }
+			    } )
+			    .then( editor => {
+			        console.log( editor );
+			    } )
+			    .catch( error => {
+			        console.error( error );
+			    } );
+		});
+	</script>
 	<script type="text/javascript" src="js/scripts.js"></script>
-	<script>$("#email-select").bsMultiSelect();</script>
 </body>
 </html>
