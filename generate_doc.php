@@ -115,6 +115,12 @@ if(!empty($comment)){
     $commentTable->addCell(9400)->addText($comment, $tableFontStlye, array('spaceAfter' => 0) );
 }
 
-// Saving the document as OOXML file...
+// Saving the document as docx file...
 $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
 $objWriter->save('output/'.$docName.'.docx');
+
+//force download docx file
+$host  = $_SERVER['HTTP_HOST'];
+$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+$fileName = 'output/'.$docName.'.docx';
+header("Location: http://$host$uri/$fileName");
