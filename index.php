@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once 'process.php';
 ?>
 <!DOCTYPE html>
@@ -23,12 +23,19 @@ require_once 'process.php';
 				    Daily Report Genarator
 				  </div>
 				  <div class="card-body">
-
 				    <form method="POST" action="" id="report-form">
 					  <div class="form-group row">
 					    <label for="name" class="col-sm-2 col-form-label">Name</label>
 					    <div class="col-sm-10">
-					      <input type="text" value="MD. Shibbir Ahmed" class="form-control" id="name" name="name" placeholder="Name" required="1">
+                            <select class="form-control" id="name" name="name"  required="1">
+                                <option value=""><-- Select Name --></option>
+                                <option value="Aminur Islam">Aminur Islam</option>
+                                <option value="Babul Ahmed">Babul Ahmed</option>
+                                <option value="MD. Shibbir Ahmed">MD. Shibbir Ahmed</option>
+                                <option value="Mohamad Yousuf">Mohamad Yousuf</option>
+                                <option value="Niloy Dea Sorkar">Niloy Dea Sorkar</option>
+                                <option value="Sagor Biswas">Sagor Biswas</option>
+                            </select>
 					    </div>
 					  </div>
 
@@ -48,7 +55,7 @@ require_once 'process.php';
 					    <label for="shift_start" class="col-sm-2 col-form-label">Shift</label>
 					    <div class="col-sm-4">
 					      <div class="input-group date" id="report-start-time-picker" data-target-input="nearest">
-		                    <input type="text" value="2:00 PM" id="shift_start" name="shift_start" class="form-control datetimepicker-input" data-target="#report-start-time-picker"  required="1"/>
+		                    <input type="text" value="10:00 AM" id="shift_start" name="shift_start" class="form-control datetimepicker-input" data-target="#report-start-time-picker"  required="1"/>
 		                    <div class="input-group-append" data-target="#report-start-time-picker" data-toggle="datetimepicker">
 		                        <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
 		                    </div>
@@ -69,10 +76,12 @@ require_once 'process.php';
 					    <label for="work_arena" class="col-sm-2 col-form-label">Work Arena</label>
 					    <div class="col-sm-10">
 					      <select class="form-control" id="work_arena" name="work_arena"  required="1">
-						      <option value="Web Development">Web Development</option>
-						      <option value="Web Design">Web Design</option>
-						      <option value="Graphic Design">Graphic Design</option>
-						      <option value="Android Apps Development">Android Apps Development</option>
+                              <option value=""><-- Select One --></option>
+                              <option value="Android Apps Development">Android Apps Development</option>
+                              <option value="Content Writer">Content Writer</option>
+                              <option value="Web Development">Web Development</option>
+                              <option value="Web Design">Web Design</option>
+                              <option value="Graphic Design">Graphic Design</option>
 						    </select>
 					    </div>
 					</div>
@@ -81,7 +90,11 @@ require_once 'process.php';
 					    <label for="reporting_to" class="col-sm-2 col-form-label">Reporting to</label>
 					    <div class="col-sm-10">
 					      <select class="form-control" id="reporting_to" name="reporting_to"  required="1">
-						      <option value="Engr. Rony Debnath">Engr. Rony Debnath</option>
+                              <option value=""><-- Select One --></option>
+                              <option value="Amor Chandra Das">Amor Chandra Das</option>
+                              <option value="Araf Karim">Araf Karim</option>
+                              <option value="Engr. Rony Debnath">Engr. Rony Debnath</option>
+                              <option value="Md Ashraful Islam">Md Ashraful Islam</option>
 						    </select>
 					    </div>
 					</div>
@@ -192,7 +205,7 @@ require_once 'process.php';
 					  <div class="form-group row">
 					    <div class="col-sm-10 offset-sm-1 text-center">
 					      <button type="submit" class="btn btn-success" id="send-mail" name="send-mail"><i class="fa fa-paper-plane"></i> Send Mail</button>
-					      <button type="submit" class="btn btn-primary" name="genarate">Genarate</button>
+					      <button type="submit" class="btn btn-primary" name="generate">Generate</button>
 					      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#doc-preview-modal"  id="doc_perview">Preview</button>
 					    </div>
 					  </div>
@@ -250,7 +263,7 @@ require_once 'process.php';
 				<!-- Activity Informaion  End-->
 
 				<!-- Check In/Check Out Start -->
-				<div class="check-section">	
+				<div class="check-section">
 					<h3 style="text-align: center; font-family: Calibri, sans-serif">Check In / Check Out</h3>
 					<table style="font-family: Calibri, sans-serif; border:1px solid black; border-collapse: collapse;" align="center" width="100%">
 						<tr>
@@ -271,9 +284,9 @@ require_once 'process.php';
 						</tr>
 					</table>
 				</div>
-				<!-- Check In/Check Out End -->	
+				<!-- Check In/Check Out End -->
 
-				<!-- Activity Log Start -->	
+				<!-- Activity Log Start -->
 				<div class="log-section">
 					<h3 style="text-align: center; font-family: Calibri, sans-serif">Daily Activity Log</h3>
 					<table style="font-family: Calibri, sans-serif; border:1px solid black; border-collapse: collapse;" align="center" width="100%">
@@ -281,33 +294,34 @@ require_once 'process.php';
 							<th style="border: 1px solid black; padding: 3px 5px; background-color: #4472C4; color: white;">SL</th>
 							<th style="border: 1px solid black; padding: 3px 5px; background-color: #4472C4; color: white;">Activity Log</th>
 							<th style="border: 1px solid black; padding: 3px 5px; background-color: #4472C4; color: white;">Description</th>
+							<th style="border: 1px solid black; padding: 3px 5px; background-color: #4472C4; color: white;">Status</th>
 						</thead>
-						<tbody id="doc_task_list">	</tbody>	
+						<tbody id="doc_task_list">	</tbody>
 					</table>
 				</div>
-				<!-- Activity Log End -->	
+				<!-- Activity Log End -->
 
-				<!-- Comment Start -->	
+				<!-- Comment Start -->
 				<div class="comment-section " id="doc_comment_section">
 					<h3 style="text-align: center; font-family: Calibri, sans-serif">Comment</h3>
 					<div style="border: 1px solid #000; padding: 5px; font-family: Calibri, sans-serif">
 						<p id="doc_comment"></p>
 					</div>
 				</div>
-				<!-- Comment End -->	
+				<!-- Comment End -->
 			</div> <!-- end doc-area -->
 		</div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> 
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
-		
-		
 
-	
+
+
+
 	</div>
 <script type="text/javascript" src="js/jquery-3.3.1.min.js" ></script>
     <script type="text/javascript" src="js/popper.min.js"></script>
@@ -346,6 +360,7 @@ require_once 'process.php';
 	<script>
 		$(document).ready(function(){
 			$("#email-select").bsMultiSelect();
+
 			ClassicEditor
 			    .create( document.querySelector( '#email_body' ), {
 			        toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList' ],

@@ -2,8 +2,8 @@
 require_once 'functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	
-	if (array_key_exists('send-mail', $_POST)) {
+
+	if (array_key_exists('send-mail', $_POST) || array_key_exists('generate', $_POST)) {
 
 		$name = $date = $shift_start = $shift_end = $work_arena = $reporting_to = $log_in_time = $log_out_time = $tasks = $comment = $mail_from = $send_mail_permission = $mail_from_password = $mail_subject = $mail_to = $email_body = '';
 
@@ -48,23 +48,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		$comment = $_POST['comment'];
 
-		if ($send_mail_permission == 0) {
-			echo "Mail generated";
-		}else if($send_mail_permission == 1){
-			echo "Mail send";
-		}
-
-		
 		/*doc generate start*/
 		require_once 'generate_doc.php';
 		/*doc generate end*/
 
-		/*send email start*/
-		//require_once 'send_mail.php';
-		/*send email end*/
-
-
-
+        if($send_mail_permission == 1){
+            /*send email start*/
+            require_once 'send_mail.php';
+            /*send email end*/
+        }
 
 	}
 

@@ -176,15 +176,18 @@ jQuery(document).ready(function($) {
         var allTasksDescriptionFiltered = allTasksDescription.filter(function (el) {
             return el != null;
         });
+        var allTasksStatusFiltered = allTasksStatus.filter(function (el) {
+            return el != null;
+        });
 
-        if (allTaskNameFiltered.length > 0 || allTasksDescriptionFiltered.length > 0) {
+        if (allTaskNameFiltered.length > 0 || allTasksDescriptionFiltered.length > 0 || allTasksStatusFiltered.length > 0) {
             for(i=0; i<allTaskNameFiltered.length; i++){
-                if (typeof(allTaskNameFiltered[i]) != 'undefined' && typeof(allTasksDescriptionFiltered[i]) != 'undefined') {
-                    tableRow += '<tr><td style="border: 1px solid black; padding: 3px 5px;">'+ serial++ +'</td><td style="border: 1px solid black; padding: 3px 5px;">'+allTaskNameFiltered[i]+'</td><td style="border: 1px solid black; padding: 3px 5px;">'+allTasksDescriptionFiltered[i]+'</td></tr>';  
+                if (typeof(allTaskNameFiltered[i]) != 'undefined' && typeof(allTasksDescriptionFiltered[i]) != 'undefined' && typeof(allTasksStatusFiltered[i]) != 'undefined' ) {
+                    tableRow += '<tr><td style="border: 1px solid black; padding: 3px 5px;">'+ serial++ +'</td><td style="border: 1px solid black; padding: 3px 5px;">'+allTaskNameFiltered[i]+'</td><td style="border: 1px solid black; padding: 3px 5px;">'+allTasksDescriptionFiltered[i]+'</td><td style="border: 1px solid black; padding: 3px 5px;">'+allTasksStatusFiltered[i]+'</td></tr>';
                 }   
             }
         }else{
-            tableRow += '<tr><td style="border: 1px solid black; padding: 3px 5px;" colspan="3" align="center">No task</td></tr>'; 
+            tableRow += '<tr><td style="border: 1px solid black; padding: 3px 5px;" colspan="4" align="center">No task</td></tr>';
         }     
 
         $('#doc_task_list').html(tableRow);

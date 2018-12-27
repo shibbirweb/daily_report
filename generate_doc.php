@@ -119,8 +119,10 @@ if(!empty($comment)){
 $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
 $objWriter->save('output/'.$docName.'.docx');
 
-//force download docx file
-$host  = $_SERVER['HTTP_HOST'];
-$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-$fileName = 'output/'.$docName.'.docx';
-header("Location: http://$host$uri/$fileName");
+if (array_key_exists('generate', $_POST)){
+    //force download docx file
+    $host  = $_SERVER['HTTP_HOST'];
+    $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+    $fileName = 'output/'.$docName.'.docx';
+    header("Location: http://$host$uri/$fileName");
+}
