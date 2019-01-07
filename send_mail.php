@@ -35,11 +35,18 @@ try {
     $mail->Body    = $email_body;
 
     $mail->send();
-    echo 'Message has been sent';
+    echo '<div class="text-success">
+            <i class="fa fa-smile-o fa-5x"></i>
+            <h3>Mail send successfully</h3>
+          </div>';
 } catch (Exception $e) {
-    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+    echo '<div class="text-danger">
+            <i class="fa fa-frown-o fa-5x"></i>
+            <h3>Failed to send mail</h3>
+            <p class="text-dark">'.$mail->ErrorInfo.'</p>
+          </div>';
 
-    /*if (file_exists('output/'.$docName.'.docx')) {
+    if (file_exists('output/'.$docName.'.docx')) {
         unlink('output/'.$docName.'.docx');
-    }*/
+    }
 }

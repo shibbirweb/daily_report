@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	if (array_key_exists('send-mail', $_POST) || array_key_exists('generate', $_POST)) {
 
-		$name = $date = $shift_start = $shift_end = $work_arena = $reporting_to = $log_in_time = $log_out_time = $tasks = $comment = $mail_from = $send_mail_permission = $mail_from_password = $mail_subject = $mail_to = $email_body = '';
+		$name = $date = $shift_start = $shift_end = $work_arena = $reporting_to = $log_in_time = $log_out_time = $tasks = $comment = $mail_from = $send_mail_permission = $mail_from_password = $mail_subject = $mail_to = $email_body = $default_mail = '';
 
 		$name = $_POST['name'];
 		$date = $_POST['date'];
@@ -17,6 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$log_out_time = $_POST['log_out_time'];
 
 		$send_mail_permission = $_POST['send_mail_permission'];
+		$default_mail = $_POST['default_mail'];
+
 
 		/*mail fields starts*/
 
@@ -38,6 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		if (array_key_exists('email_body', $_POST)) {
 			$email_body = $_POST['email_body'];
+		}
+
+		if ($default_mail == 1){
+			$mail_from = 'shibbirtestmail@gmail.com';
+			$mail_from_password = '';
 		}
 
 		/*mail fields end*/

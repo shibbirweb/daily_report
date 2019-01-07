@@ -171,17 +171,17 @@
 					  	    </div>
 					  	  </div>
 					  	</div>
-					    <div class="row">
-					      <label for="send_from_mail" class="col-sm-2 col-form-label">Send From</label>
-					    <div class="col-sm-10">
-					      <input type="email" class="form-control optional_field" name="send_from_mail" id="send_from_mail" placeholder="Send From" aria-describedby="send-from-email-help-block">
-					      <small id="send-from-email-help-block" class="form-text text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> Use only gmail address</small>
+					    <div class="row optional_field_for_mail">
+					      	<label for="send_from_mail" class="col-sm-2 col-form-label">Send From</label>
+					    	<div class="col-sm-10">
+					      	<input type="email" class="form-control" name="send_from_mail" id="send_from_mail" placeholder="Send From" aria-describedby="send-from-email-help-block">
+					      	<small id="send-from-email-help-block" class="form-text text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> Use only gmail address</small>
+					    	</div>
 					    </div>
-					    </div>
-					    <div class="row mt-2">
+					    <div class="row mt-2 optional_field_for_mail">
 					      <label for="send-from-email-password" class="col-sm-2 col-form-label">Password</label>
 					    <div class="col-sm-10">
-					      <input type="password" class="form-control optional_field" name="send_from_mail_password" id="send-from-email-password" placeholder="Email password" aria-describedby="send-from-email-password-help-block">
+					      <input type="password" class="form-control" name="send_from_mail_password" id="send-from-email-password" placeholder="Email password" aria-describedby="send-from-email-password-help-block">
 					      <small id="send-from-email-password-help-block" class="form-text text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> Your password will not store in server</small>
 					    </div>
 					    </div>
@@ -202,14 +202,22 @@
 					    </div>
 					    <div class="row mt-2">
 					      <label for="send-from-email-subject" class="col-sm-2 col-form-label">Subject</label>
-						    <div class="col-sm-10">
+						    <div class="input-group col-sm-10">
 						      <input type="text"name="mail_subject" class="form-control optional_field" id="send-from-email-subject" placeholder="Email subject">
+						      <div class="input-group-append">
+						        <button class="btn btn-outline-info" id="subject_generator" type="button"><i class="fa fa-clipboard"></i> Generate Subject</button>
+						       </div>
 						    </div>
 					    </div>
 					    <div class="row mt-2">
 					      <label for="email_body" class="col-sm-2 col-form-label">Message Body</label>
 						    <div class="col-sm-10">
 						      <textarea class="form-control" id="email_body" name="email_body" rows="5" placeholder="Email body"></textarea>
+						      <div class="row">
+						      	<div class="col-md-12 mt-1 text-right">
+						          <button class="btn btn-sm btn-outline-secondary" type="button"><i class="fa fa-clipboard"></i> Generate body</button>
+						      	</div>
+						        </div>
 						    </div>
 					    </div>
 					  </fieldset>
@@ -221,10 +229,15 @@
 					      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#doc-preview-modal"  id="doc_perview"><i class="fa fa-eye" aria-hidden="true"></i> Preview</button>
 					    </div>
 					  </div>
-
-
 					</form>
-					<div class="successMessage"></div>
+					<div class="row">
+						<div class="col-md-12 text-center loading_image_area" style="display: none">
+							<img src="images/loading.gif" alt="Loading" class="loading_img">
+						</div>
+						<div class="col-md-12 text-center response_message">
+							
+						</div>
+					</div>
 				  </div>
 				  <div class="card-footer text-center">&copy; Shibbir Ahmed 2018</div>
 				</div>
@@ -331,11 +344,8 @@
   </div>
 </div>
 
-
-
-
 	</div>
-<script type="text/javascript" src="js/jquery-3.3.1.min.js" ></script>
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js" ></script>
     <script type="text/javascript" src="js/popper.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/moment.min.js"></script>
@@ -372,7 +382,7 @@
 	<script>
 		$(document).ready(function(){
 			$("#email-select").bsMultiSelect();
-
+			
 			ClassicEditor
 			    .create( document.querySelector( '#email_body' ), {
 			        toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList' ],
@@ -389,10 +399,10 @@
 			        }
 			    } )
 			    .then( editor => {
-			        console.log( editor );
+			        //console.log( editor );
 			    } )
 			    .catch( error => {
-			        console.error( error );
+			        //console.error( error );
 			    } );
 		});
 	</script>

@@ -235,6 +235,16 @@ jQuery(document).ready(function($) {
             // alert(diff.hours()+" hour "+diff.minutes() + " minutes");
         }
 
+        /*subject auto generating start*/
+        $('#subject_generator').click(function(){
+            name = $('#name').val();
+            date = $('#date').val();
+            subject = name+"'s Daily Report on "+date;
+            $('#send-from-email-subject').val(subject);
+        });
+        /*subject auto generating end*/
+
+        
 
         /*radio button on change for email*/
         $('#email-options').show('slow');
@@ -253,24 +263,39 @@ jQuery(document).ready(function($) {
             }
         });
 
+        $('#email-options .optional_field_for_mail').hide('slow');
+
+        $('#report-form input[type=radio][name=default_mail]').on('change',function() {
+            if (this.value == 0) {
+                $('#email-options .optional_field_for_mail').show('slow');
+                $('#email-options .optional_field_for_mail :input').attr('required', 'required');
+            }
+            else if (this.value == 1) {
+                $('#email-options .optional_field_for_mail :input').removeAttr('required');
+                $('#email-options .optional_field_for_mail').hide('slow');
+            }
+        });
+
 
         $('#report-form').submit(function(event){
-            $('.successMessage').html('');
+            event.preventDefault();
+            $('.response_message').slideUp('fast');
+            $('.loading_image_area').slideDown('fast');
             buttonName = $(this).find("button[type=submit]:focus").attr('name');
             buttonValue = $(this).find("button[type=submit]:focus").text();
             //alert(buttonName);
             var allData = $(this).serializeArray();
             allData.push({name: buttonName, value: buttonValue});
 
-            event.preventDefault();
+            
             console.log(allData);
             //console.log(allData);
             $.post(
                 $(this).attr('action'),
                 allData,
                 function(data){
-                    
-                    $('.successMessage').html(data);
+                    $('.loading_image_area').slideUp('fast');
+                    $('.response_message').html(data).slideDown('fast');
                 }
             )
         });

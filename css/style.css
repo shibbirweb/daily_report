@@ -17,3 +17,8 @@
 .dashboardcode-bsmultiselect  ul:first-child li  button{
 	color: white;
 }
+
+.loading_img{
+	max-width: 150px;
+	max-height: 150px;
+}
