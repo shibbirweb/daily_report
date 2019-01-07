@@ -60,7 +60,6 @@ jQuery(document).ready(function($) {
 	});
     /*Repeatable field end*/
 
-
     /*Dynamic Part Start*/
 
     $("#report-form").on("submit", function(e){
@@ -239,16 +238,41 @@ jQuery(document).ready(function($) {
 
         /*radio button on change for email*/
         $('#email-options').show('slow');
+        $('#email-options .optional_field').attr('required', 'required');
         
         $('#report-form input[type=radio][name=send_mail_permission]').on('change',function() {
             if (this.value == 1) {
                 $('#email-options').show('slow');
                 $('#send-mail').removeAttr('disabled');
+                $('#email-options .optional_field').attr('required', 'required');
             }
             else if (this.value == 0) {
                 $('#email-options').hide('slow');
                 $('#send-mail').attr("disabled","disabled");
+                $('#email-options .optional_field').removeAttr('required');
             }
+        });
+
+
+        $('#report-form').submit(function(event){
+            $('.successMessage').html('');
+            buttonName = $(this).find("button[type=submit]:focus").attr('name');
+            buttonValue = $(this).find("button[type=submit]:focus").text();
+            //alert(buttonName);
+            var allData = $(this).serializeArray();
+            allData.push({name: buttonName, value: buttonValue});
+
+            event.preventDefault();
+            console.log(allData);
+            //console.log(allData);
+            $.post(
+                $(this).attr('action'),
+                allData,
+                function(data){
+                    
+                    $('.successMessage').html(data);
+                }
+            )
         });
 
     });

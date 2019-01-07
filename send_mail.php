@@ -38,4 +38,8 @@ try {
     echo 'Message has been sent';
 } catch (Exception $e) {
     echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+
+    /*if (file_exists('output/'.$docName.'.docx')) {
+        unlink('output/'.$docName.'.docx');
+    }*/
 }

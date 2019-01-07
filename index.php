@@ -1,5 +1,5 @@
 <?php
-require_once 'process.php';
+//require_once 'process.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,13 +17,13 @@ require_once 'process.php';
 <body>
 	<div class="container">
 		<div class="row mt-5">
-			<div class="col-md-8 offset-md-2 form-area">
+			<div class="col-md-10 offset-md-1 form-area">
 				<div class="card">
 				  <div class="card-header text-center">
 				    Daily Report Genarator
 				  </div>
 				  <div class="card-body">
-				    <form method="POST" action="" id="report-form">
+				    <form method="POST" action="process.php" id="report-form">
 					  <div class="form-group row">
 					    <label for="name" class="col-sm-2 col-form-label">Name</label>
 					    <div class="col-sm-10">
@@ -64,7 +64,7 @@ require_once 'process.php';
 		                 <label for="shift_end"  class="col-sm-2 text-center col-form-label">to</label>
 					    <div class="col-sm-4">
 					      <div class="input-group date" id="shift-end-time-picker" data-target-input="nearest">
-		                    <input type="text" id="shift_end" name="shift_end" value="6:00 PM" class="form-control datetimepicker-input" data-target="#shift-end-time-picker"  required="1"/>
+		                    <input type="text" id="shift_end" name="shift_end" value="7:00 PM" class="form-control datetimepicker-input" data-target="#shift-end-time-picker"  required="1"/>
 		                    <div class="input-group-append" data-target="#shift-end-time-picker" data-toggle="datetimepicker">
 		                        <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
 		                    </div>
@@ -128,7 +128,7 @@ require_once 'process.php';
 					    	<fieldset class="todos_labels">
 						      <div class="repeatable row"></div>
 								<div class="form-group mt-1" style="text-align:center;">
-									<input id="task_lebel" type="button" value="Add More Task" class="btn btn-success btn-sm add" align="center">
+									<button id="task_lebel" type="button" class="btn btn-success btn-sm add" align="center"><i class="fa fa-plus" aria-hidden="true"></i> Add More Task</button>
 								</div>
 							</fieldset>
 					    </div>
@@ -143,7 +143,7 @@ require_once 'process.php';
 
 					  <fieldset class="form-group">
 					    <div class="row">
-					      <legend class="col-form-label col-sm-2 pt-0">Send Mail?</legend>
+					      <legend class="col-form-label col-sm-2 pt-0">Send Mail</legend>
 					      <div class="col-sm-10">
 					        <div class="form-check form-check-inline">
 					          <input class="form-check-input" type="radio" name="send_mail_permission" id="email-yes" value="1" checked>
@@ -158,17 +158,30 @@ require_once 'process.php';
 					  </fieldset>
 
 					  <fieldset class="form-group" id="email-options" style="display: none;">
+					  	<div class="row">
+					  	  <legend class="col-form-label col-sm-2 pt-0">Use default Mail</legend>
+					  	  <div class="col-sm-10">
+					  	    <div class="form-check form-check-inline">
+					  	      <input class="form-check-input" type="radio" name="default_mail" id="default-email-yes" value="1" checked>
+					  	      <label class="form-check-label" for="default-email-yes">Yes</label>
+					  	    </div>
+					  	    <div class="form-check form-check-inline">
+					  	      <input class="form-check-input" type="radio" name="default_mail" id="default-email-no" value="0">
+					  	      <label class="form-check-label" for="default-email-no">No</label>
+					  	    </div>
+					  	  </div>
+					  	</div>
 					    <div class="row">
 					      <label for="send_from_mail" class="col-sm-2 col-form-label">Send From</label>
 					    <div class="col-sm-10">
-					      <input type="email" class="form-control" name="send_from_mail" id="send_from_mail" placeholder="Send From" aria-describedby="send-from-email-help-block">
+					      <input type="email" class="form-control optional_field" name="send_from_mail" id="send_from_mail" placeholder="Send From" aria-describedby="send-from-email-help-block">
 					      <small id="send-from-email-help-block" class="form-text text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> Use only gmail address</small>
 					    </div>
 					    </div>
 					    <div class="row mt-2">
 					      <label for="send-from-email-password" class="col-sm-2 col-form-label">Password</label>
 					    <div class="col-sm-10">
-					      <input type="password" class="form-control" name="send_from_mail_password" id="send-from-email-password" placeholder="Email password" aria-describedby="send-from-email-password-help-block">
+					      <input type="password" class="form-control optional_field" name="send_from_mail_password" id="send-from-email-password" placeholder="Email password" aria-describedby="send-from-email-password-help-block">
 					      <small id="send-from-email-password-help-block" class="form-text text-muted"><i class="fa fa-info-circle" aria-hidden="true"></i> Your password will not store in server</small>
 					    </div>
 					    </div>
@@ -176,22 +189,21 @@ require_once 'process.php';
 					      <label for="send-to-email" class="col-sm-2 col-form-label">Send To </label>
 						    <div class="col-sm-10">
 						     <select name="mail_to[]" id="email-select" class="form-control"  multiple="multiple" style="display: none;">
-								<!-- <option value="ikram.akand@gmail.com">Rayms Raymon</option>
+								<option value="ikram.akand@gmail.com">Rayms Raymon</option>
 								<option value="bjayanta.me@gmail.com">Jayanta Biswas</option>
 								<option value="ronycse9@gmail.com">Engr. Rony Debnath</option>
 								<option value="arafkarim@gmail.com">Araf Karim</option>
 								<option value="ashrafulbdit@gmail.com">Md Ashraful Islam</option>
 								<option value="akhteruzzaman44@gmail.com">Md. Akhteruzzaman</option>
-								<option value="rtr.amor@gmail.com">Amor Chandra Das</option> -->
+								<option value="rtr.amor@gmail.com">Amor Chandra Das</option>
 								<option value="shibbirweb@gmail.com">Shibbir Ahmed</option>
-								<option value="happycoding@shayzam.net">Happy Coding</option>
 							</select>
 						    </div>
 					    </div>
 					    <div class="row mt-2">
 					      <label for="send-from-email-subject" class="col-sm-2 col-form-label">Subject</label>
 						    <div class="col-sm-10">
-						      <input type="text"name="mail_subject" class="form-control" id="send-from-email-subject" placeholder="Email subject">
+						      <input type="text"name="mail_subject" class="form-control optional_field" id="send-from-email-subject" placeholder="Email subject">
 						    </div>
 					    </div>
 					    <div class="row mt-2">
@@ -205,14 +217,14 @@ require_once 'process.php';
 					  <div class="form-group row">
 					    <div class="col-sm-10 offset-sm-1 text-center">
 					      <button type="submit" class="btn btn-success" id="send-mail" name="send-mail"><i class="fa fa-paper-plane"></i> Send Mail</button>
-					      <button type="submit" class="btn btn-primary" name="generate">Generate</button>
-					      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#doc-preview-modal"  id="doc_perview">Preview</button>
+					      <button type="submit" class="btn btn-primary" name="generate"><i class="fa fa-floppy-o" aria-hidden="true"></i> Generate</button>
+					      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#doc-preview-modal"  id="doc_perview"><i class="fa fa-eye" aria-hidden="true"></i> Preview</button>
 					    </div>
 					  </div>
 
 
 					</form>
-
+					<div class="successMessage"></div>
 				  </div>
 				  <div class="card-footer text-center">&copy; Shibbir Ahmed 2018</div>
 				</div>
@@ -353,7 +365,7 @@ require_once 'process.php';
 	      	</div>
 	      	<div class=" mt-1">
 	      		<label for="">Action</label><br>
-	  			<input onclick="taskNameDesDelete({?})" type="button" class="btn btn-sm btn-danger span-2 mb-2 delete" value="Remove" />
+	  			<button onclick="taskNameDesDelete({?})" type="button" class="btn btn-sm btn-danger span-2 mb-2 delete"><i class="fa fa-minus" aria-hidden="true"></i> Remove</button>
       	</div>
       </div>
 	</script>

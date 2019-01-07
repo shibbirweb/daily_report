@@ -52,13 +52,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		require_once 'generate_doc.php';
 		/*doc generate end*/
 
+
+
         if($send_mail_permission == 1){
             /*send email start*/
             require_once 'send_mail.php';
             /*send email end*/
         }
 
-	}
 
-	exit();
+
+	}
 }
