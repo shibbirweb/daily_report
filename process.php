@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		if ($default_mail == 1){
 			$mail_from = 'shibbirtestmail@gmail.com';
-			$mail_from_password = '';
+			$mail_from_password = '1Q2W3E4R5T';
 		}
 
 		/*mail fields end*/

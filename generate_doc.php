@@ -97,7 +97,7 @@ if(!empty($tasks) && is_array($tasks)){
     $activityLogTable->addRow();
     $activityLogTable->addCell(1050)->addText($serial++, $tableFontStlye, $activityTableFirstCellParaStyle );
     $activityLogTable->addCell(2950)->addText($task['name'], $tableFontStlye, $activityTableFirstCellParaStyle );
-    $activityLogTable->addCell(3150)->addText($task['description'], $tableFontStlye, $tableParaStyle );
+    $activityLogTable->addCell(3150)->addText($task['description'], $tableFontStlye, $activityTableFirstCellParaStyle );
     $activityLogTable->addCell(2250)->addText($task['status'], $tableFontStlye, $activityTableFirstCellParaStyle );
     }
 }else{

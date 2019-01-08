@@ -33,7 +33,7 @@
                                 <option value="Babul Ahmed">Babul Ahmed</option>
                                 <option value="MD. Shibbir Ahmed">MD. Shibbir Ahmed</option>
                                 <option value="Mohamad Yousuf">Mohamad Yousuf</option>
-                                <option value="Niloy Dea Sorkar">Niloy Dea Sorkar</option>
+                                <option value="Niloy Dey Sorkar">Niloy Dey Sorkar</option>
                                 <option value="Sagor Biswas">Sagor Biswas</option>
                             </select>
 					    </div>
@@ -43,7 +43,7 @@
 					    <label for="date" class="col-sm-2 col-form-label">Date</label>
 					    <div class="col-sm-10">
 					      <div class="input-group date" id="report-date-picker" data-target-input="nearest">
-		                    <input type="text" id="date" name="date" class="form-control datetimepicker-input" data-target="#report-date-picker"  required="1"/>
+		                    <input type="text" id="date" name="date" class="form-control datetimepicker-input" data-target="#report-date-picker"  required="1" autocomplete="off" />
 		                    <div class="input-group-append" data-target="#report-date-picker" data-toggle="datetimepicker">
 		                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
 		                    </div>
@@ -55,7 +55,7 @@
 					    <label for="shift_start" class="col-sm-2 col-form-label">Shift</label>
 					    <div class="col-sm-4">
 					      <div class="input-group date" id="report-start-time-picker" data-target-input="nearest">
-		                    <input type="text" value="10:00 AM" id="shift_start" name="shift_start" class="form-control datetimepicker-input" data-target="#report-start-time-picker"  required="1"/>
+		                    <input type="text" value="10:00 AM" id="shift_start" name="shift_start" class="form-control datetimepicker-input" data-target="#report-start-time-picker"  required="1" autocomplete="off"/>
 		                    <div class="input-group-append" data-target="#report-start-time-picker" data-toggle="datetimepicker">
 		                        <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
 		                    </div>
@@ -64,7 +64,7 @@
 		                 <label for="shift_end"  class="col-sm-2 text-center col-form-label">to</label>
 					    <div class="col-sm-4">
 					      <div class="input-group date" id="shift-end-time-picker" data-target-input="nearest">
-		                    <input type="text" id="shift_end" name="shift_end" value="7:00 PM" class="form-control datetimepicker-input" data-target="#shift-end-time-picker"  required="1"/>
+		                    <input type="text" id="shift_end" name="shift_end" value="7:00 PM" class="form-control datetimepicker-input" data-target="#shift-end-time-picker"  required="1" autocomplete="off" />
 		                    <div class="input-group-append" data-target="#shift-end-time-picker" data-toggle="datetimepicker">
 		                        <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
 		                    </div>
@@ -94,6 +94,7 @@
                               <option value="Amor Chandra Das">Amor Chandra Das</option>
                               <option value="Araf Karim">Araf Karim</option>
                               <option value="Engr. Rony Debnath">Engr. Rony Debnath</option>
+                              <option value="Jayanta Biswas">Jayanta Biswas</option>
                               <option value="Md Ashraful Islam">Md Ashraful Islam</option>
 						    </select>
 					    </div>
@@ -105,7 +106,7 @@
 					    <label for="log_in_time" class="col-sm-2 col-form-label">Log in</label>
 					    <div class="col-sm-4">
 					      <div class="input-group date" id="log-in-time-picker" data-target-input="nearest">
-		                    <input type="text"  id="log_in_time" name="log_in_time" class="form-control datetimepicker-input" data-target="#log-in-time-picker"  required="1"/>
+		                    <input type="text"  id="log_in_time" name="log_in_time" class="form-control datetimepicker-input" data-target="#log-in-time-picker"  required="1" autocomplete="off" />
 		                    <div class="input-group-append" data-target="#log-in-time-picker" data-toggle="datetimepicker">
 		                        <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
 		                    </div>
@@ -114,7 +115,7 @@
 		                 <label for="log_out_time"  class="col-sm-2 text-center col-form-label">Log out</label>
 					    <div class="col-sm-4">
 					      <div class="input-group date" id="log-out-time-picker" data-target-input="nearest">
-		                    <input type="text" id="log_out_time" name="log_out_time" class="form-control datetimepicker-input" data-target="#log-out-time-picker"  required="1"/>
+		                    <input type="text" id="log_out_time" name="log_out_time" class="form-control datetimepicker-input" data-target="#log-out-time-picker"  required="1" autocomplete="off" />
 		                    <div class="input-group-append" data-target="#log-out-time-picker" data-toggle="datetimepicker">
 		                        <div class="input-group-text"><i class="fa fa-clock-o"></i></div>
 		                    </div>
@@ -196,14 +197,13 @@
 								<option value="ashrafulbdit@gmail.com">Md Ashraful Islam</option>
 								<option value="akhteruzzaman44@gmail.com">Md. Akhteruzzaman</option>
 								<option value="rtr.amor@gmail.com">Amor Chandra Das</option>
-								<option value="shibbirweb@gmail.com">Shibbir Ahmed</option>
 							</select>
 						    </div>
 					    </div>
 					    <div class="row mt-2">
 					      <label for="send-from-email-subject" class="col-sm-2 col-form-label">Subject</label>
 						    <div class="input-group col-sm-10">
-						      <input type="text"name="mail_subject" class="form-control optional_field" id="send-from-email-subject" placeholder="Email subject">
+						      <input type="text"name="mail_subject" class="form-control optional_field" id="send-from-email-subject" placeholder="Email subject" autocomplete="off">
 						      <div class="input-group-append">
 						        <button class="btn btn-outline-info" id="subject_generator" type="button"><i class="fa fa-clipboard"></i> Generate Subject</button>
 						       </div>
@@ -215,7 +215,7 @@
 						      <textarea class="form-control" id="email_body" name="email_body" rows="5" placeholder="Email body"></textarea>
 						      <div class="row">
 						      	<div class="col-md-12 mt-1 text-right">
-						          <button class="btn btn-sm btn-outline-secondary" type="button"><i class="fa fa-clipboard"></i> Generate body</button>
+						          <button class="btn btn-sm btn-outline-secondary" id="mail_body_generator" type="button"><i class="fa fa-clipboard"></i> Generate body</button>
 						      	</div>
 						        </div>
 						    </div>
@@ -239,7 +239,7 @@
 						</div>
 					</div>
 				  </div>
-				  <div class="card-footer text-center">&copy; Shibbir Ahmed 2018</div>
+				  <div class="card-footer text-center">&copy; MAXSOP 2019</div>
 				</div>
 			</div><!-- end form-area -->
 		</div>
@@ -378,33 +378,6 @@
 	  			<button onclick="taskNameDesDelete({?})" type="button" class="btn btn-sm btn-danger span-2 mb-2 delete"><i class="fa fa-minus" aria-hidden="true"></i> Remove</button>
       	</div>
       </div>
-	</script>
-	<script>
-		$(document).ready(function(){
-			$("#email-select").bsMultiSelect();
-			
-			ClassicEditor
-			    .create( document.querySelector( '#email_body' ), {
-			        toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList' ],
-			        heading: {
-			            options: [
-			                { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
-			                { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
-			                { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
-			                { model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3' },
-			                { model: 'heading4', view: 'h4', title: 'Heading 4', class: 'ck-heading_heading4' },
-			                { model: 'heading5', view: 'h5', title: 'Heading 5', class: 'ck-heading_heading5' },
-			                { model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' }
-			            ]
-			        }
-			    } )
-			    .then( editor => {
-			        //console.log( editor );
-			    } )
-			    .catch( error => {
-			        //console.error( error );
-			    } );
-		});
 	</script>
 	<script type="text/javascript" src="js/scripts.js"></script>
 </body>

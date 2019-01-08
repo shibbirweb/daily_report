@@ -34,6 +34,42 @@ function taskNameDesDelete(id){
 
 jQuery(document).ready(function($) {
 
+        /*multi select start*/
+        $("#email-select").bsMultiSelect();
+        /*multi select end*/
+
+        /*ck edior start*/
+    var email_body;
+    ClassicEditor
+        .create( document.querySelector( '#email_body' ), {
+            toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList' ],
+            heading: {
+                options: [
+                    { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+                    { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
+                    { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
+                    { model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3' },
+                    { model: 'heading4', view: 'h4', title: 'Heading 4', class: 'ck-heading_heading4' },
+                    { model: 'heading5', view: 'h5', title: 'Heading 5', class: 'ck-heading_heading5' },
+                    { model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' }
+                ]
+            }
+        } ).then( editor => {
+            //console.log( editor );
+            email_body = editor;
+            
+        } )  .catch( error => {
+            //console.error( error );
+        } );
+
+        function setDataInEmailBody(data) {
+            email_body.setData(data);
+        }
+       
+
+        /*ck editor end*/
+
+
     /*date picker start*/
       $(function () {
       			//Date picker
@@ -244,6 +280,14 @@ jQuery(document).ready(function($) {
         });
         /*subject auto generating end*/
 
+        /*email body auto generate start*/
+        $('#mail_body_generator').click(function(){
+            name = $("#name").val();
+            date = $("#date").val();
+            var mali_body = "<p>Dear sir,</p><p>I am sending you the daily activity log of  "+date+" in attachment. please check.</p><p>Regards,</p><p>"+name+"</p>";
+            setDataInEmailBody(mali_body);
+        });
+        /*email body auto generate end*/
         
 
         /*radio button on change for email*/
@@ -278,27 +322,29 @@ jQuery(document).ready(function($) {
 
 
         $('#report-form').submit(function(event){
-            event.preventDefault();
-            $('.response_message').slideUp('fast');
-            $('.loading_image_area').slideDown('fast');
             buttonName = $(this).find("button[type=submit]:focus").attr('name');
             buttonValue = $(this).find("button[type=submit]:focus").text();
-            //alert(buttonName);
-            var allData = $(this).serializeArray();
-            allData.push({name: buttonName, value: buttonValue});
 
-            
-            console.log(allData);
-            //console.log(allData);
-            $.post(
-                $(this).attr('action'),
-                allData,
-                function(data){
-                    $('.loading_image_area').slideUp('fast');
-                    $('.response_message').html(data).slideDown('fast');
-                }
-            )
+            $('.loading_image_area').slideUp('fast');
+            $('.response_message').slideUp('fast');
+            if (buttonName == 'send-mail') {
+                event.preventDefault();
+                $('.loading_image_area').slideDown('fast');
+                
+                var allData = $(this).serializeArray();
+                allData.push({name: buttonName, value: buttonValue});
+
+                console.log(allData);
+                //console.log(allData);
+                $.post(
+                    $(this).attr('action'),
+                    allData,
+                    function(data){
+                        $('.loading_image_area').slideUp('fast');
+                        $('.response_message').html(data).slideDown('fast');
+                    }
+                )
+            }
         });
-
     });
 
