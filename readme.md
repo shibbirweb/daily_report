@@ -11,6 +11,7 @@ Easily generate daily report in Microsoft word doucment format using JQuery.
   - Add/Change multiple task (with Name, Description)
   - Add comment of daily report
   - Set reporting person
+  - Download the report
 
 
 You can also:
