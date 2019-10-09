@@ -2,6 +2,8 @@
 
 Easily generate daily report in Microsoft word doucment format using JQuery.
 
+**Demo:** https://shibbirweb.github.io/daily-report/
+
 ## Features!
 
   - Add own name
